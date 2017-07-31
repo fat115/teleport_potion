@@ -5,19 +5,9 @@
 -- and step onto pad or walk into the blue portal light, portal closes after
 -- 10 seconds, pad remains, potions are throwable...  SFX are license Free...
 
--- Intllib
-local S
-
-if minetest.get_modpath("intllib") then
-	S = intllib.Getter()
-else
-	S = function(s, a, ...) a = {a, ...}
-		return s:gsub("@(%d+)", function(n)
-			return a[tonumber(n)]
-		end)
-	end
-
-end
+-- Load support for intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP.."/intllib.lua")
 
 
 -- max teleport distance
